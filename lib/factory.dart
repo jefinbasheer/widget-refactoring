@@ -2,12 +2,26 @@ import 'package:flutter/material.dart';
 
 class Factory extends StatelessWidget {
   const Factory({super.key});
+  Widget sportsbutton({
+    Color? buttoncolor,
+    String? buttonname,
+    void Function()? buttonaction,
+  }) {
+    return ElevatedButton(
+      onPressed: buttonaction,
+      child: Text(
+        buttonname!,
+        style: const TextStyle(color: Colors.orange),
+      ),
+      style: ElevatedButton.styleFrom(backgroundColor: buttoncolor),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    Widget cricket = Icon(Icons.sports_cricket);
-    Widget football = Icon(Icons.sports_football);
-    Widget name = Text('widgety refactoring');
+    Widget cricket = const Icon(Icons.sports_cricket);
+    Widget football = const Icon(Icons.sports_football);
+    Widget name = const Text('widgety refactoring');
     Widget sportsrow = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -18,7 +32,7 @@ class Factory extends StatelessWidget {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text('SPORTS'),
+        title: const Text('SPORTS'),
         centerTitle: true,
         backgroundColor: Colors.amber,
       ),
@@ -27,6 +41,21 @@ class Factory extends StatelessWidget {
           sportsrow,
           sportsrow,
           sportsrow,
+          sportsbutton(
+            buttoncolor: Colors.black,
+            buttonname: "First button",
+            buttonaction: () {
+              // ignore: avoid_print
+              print("first one is clicked");
+            },
+          ),
+          sportsbutton(
+            buttoncolor: Colors.transparent,
+            buttonname: 'Second button',
+            buttonaction: () {
+              print('second button is clicked');
+            },
+          ),
         ],
       ),
     );
