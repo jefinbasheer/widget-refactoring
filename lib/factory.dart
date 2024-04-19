@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:widget_refactoring_1/widgets/sportsbanner.dart';
+import 'package:widget_refactoring_1/widgets/sportsbutton.dart';
 
 class Factory extends StatelessWidget {
-  const Factory({super.key});
-  Widget sportsbutton({
-    Color? buttoncolor,
-    String? buttonname,
-    void Function()? buttonaction,
-  }) {
-    return ElevatedButton(
-      onPressed: buttonaction,
-      child: Text(
-        buttonname!,
-        style: const TextStyle(color: Colors.orange),
-      ),
-      style: ElevatedButton.styleFrom(backgroundColor: buttoncolor),
-    );
-  }
+  Widget divider = SizedBox(height: 5.0);
+
+  //const Factory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +46,31 @@ class Factory extends StatelessWidget {
               print('second button is clicked');
             },
           ),
+          Sportsbanner(
+            bannertitle: 'cricket match',
+            bannercolor: Colors.amber,
+            buttontext: 'view schwcules',
+            buttonAction: () {
+              print('schedules just see');
+            },
+          ),
+          divider,
+          Sportsbanner(
+            bannertitle: 'football match',
+            bannercolor: Color.fromARGB(255, 94, 43, 134),
+            buttontext: 'view schwcules 2',
+            buttonAction: () {
+              print('schedules just see');
+            },
+          ),
+          Sportsbanner(
+            bannertitle: 'volleball',
+            buttontext: 'visit',
+            buttonAction: () {
+              print('volley');
+            },
+            bannercolor: Colors.cyanAccent,
+          )
         ],
       ),
     );
